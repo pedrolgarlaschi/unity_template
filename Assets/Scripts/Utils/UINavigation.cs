@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
-namespace com.pedroleonardo
+namespace com.pedroleonardo.ui
 {
 	public class UINavigation : MonoBehaviour {
 

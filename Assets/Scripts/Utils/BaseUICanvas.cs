@@ -4,7 +4,7 @@ using System.Collections;
 using System;
 using System.Collections.Generic;
 
-namespace com.pedroleonardo
+namespace com.pedroleonardo.ui
 {
 	/// <summary>
 	/// UI canvas event delegate
@@ -51,9 +51,9 @@ namespace com.pedroleonardo
 			return m_canvas;
 		}
 
-		protected CanvasState m_state;
-		protected Animator m_animator;
-		protected Text[] m_textFields; 
+		protected CanvasState 	m_state;
+		protected Animation 	m_animation;
+		protected Text[] 		m_textFields; 
 		protected System.Object m_params;
 		public CanvasScaler GetScaler()
 		{
@@ -67,18 +67,27 @@ namespace com.pedroleonardo
 		public void Init()
 		{
 
-			m_animator = gameObject.GetComponent<Animator> ();
+			m_animation = gameObject.GetComponent<Animation> ();
 			m_textFields = gameObject.GetComponentsInChildren<Text> ();
 			m_state = CanvasState.close;
 
-
-			if (m_animator != null)
-					m_animator.StopPlayback ();
-
-
-
+			if (m_animation != null) {
+				m_animation.Stop ();
+			}
 		}
 
+
+		void Update()
+		{
+			if (!m_animation)
+				return;
+
+			if (!m_animation.isPlaying && m_state == CanvasState.opening)
+				OnAnimationIntroEnd ();
+			else if (!m_animation.isPlaying && m_state == CanvasState.closing)
+				OnAnimationEndEnd ();
+
+		}
 
 
 		/// <summary>
@@ -90,8 +99,10 @@ namespace com.pedroleonardo
 
 			m_state = CanvasState.opening;
 
-			if (m_animator != null)
-				m_animator.Play ("Intro");
+			if (m_animation != null) {
+
+				m_animation.Play ("Intro");
+			}
 			else
 				OnAnimationIntroEnd ();
 
@@ -104,9 +115,8 @@ namespace com.pedroleonardo
 		{
 			m_state = CanvasState.closing;
 
-
-			if (m_animator != null)
-				m_animator.Play ("Outro");
+			if (m_animation != null)
+				m_animation.Play ("Outro");
 			else
 				OnAnimationEndEnd ();
 		}
