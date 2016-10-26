@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using Coesia.events;
 
 namespace com.pedroleonardo.ui
 {
@@ -18,7 +19,7 @@ namespace com.pedroleonardo.ui
 
 					GameObject go = new GameObject();
 					
-					go.name = "ui_navigation";
+					go.name = "UINavigation";
 					instance = go.AddComponent<UINavigation>();
 
 					GameObject controllers =  GameObject.Find("controlers") as GameObject;
@@ -62,6 +63,17 @@ namespace com.pedroleonardo.ui
 		{
 			if(!instance)
 				DontDestroyOnLoad(gameObject);
+
+
+			EventManager.Instance.AddListener<UiEvent> (UiEventHandler);
+		}
+
+		private void UiEventHandler(UiEvent evt)
+		{
+			if (evt.State == BaseUICanvas.CanvasState.close)
+				OnUICanvasClose (evt.UiCanvas);
+			else if (evt.State == BaseUICanvas.CanvasState.open)
+				OnUICanvasOpen (evt.UiCanvas);
 		}
 
 
@@ -82,7 +94,7 @@ namespace com.pedroleonardo.ui
 			m_nextCanvas = null;
 		}
 
-		public BaseUICanvas OpenUICanvas<T>(string name , T param){
+		public BaseUICanvas OpenUICanvas<T>(string name , System.Object param){
 			
 			if (m_uiCanvas != null && m_uiCanvas.Name == name)
 				return m_uiCanvas;
@@ -172,7 +184,7 @@ namespace com.pedroleonardo.ui
 			
 				m_nextCanvas.GetCanvas().enabled = true;
 
-				OpenUICanvas (m_nextCanvas.Name, m_nextCanvasParams);
+				OpenUICanvas <BaseUICanvas>(m_nextCanvas.Name, m_nextCanvasParams);
 			}
 		}
 
