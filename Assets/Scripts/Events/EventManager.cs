@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-using Coesia.events;
+using io.studiocomma.events;
 
 public class EventManager : MonoBehaviour {
 	public bool LimitQueueProcesing = false;

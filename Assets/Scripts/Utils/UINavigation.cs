@@ -1,9 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-using Coesia.events;
+using io.studiocomma.events;
 
-namespace com.pedroleonardo.ui
+namespace io.studiocomma.ui
 {
 	public class UINavigation : MonoBehaviour {
 

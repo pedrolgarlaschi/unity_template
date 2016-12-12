@@ -3,9 +3,9 @@ using UnityEngine.UI;
 using System.Collections;
 using System;
 using System.Collections.Generic;
-using Coesia.events;
+using io.studiocomma.events;
 
-namespace com.pedroleonardo.ui
+namespace io.studiocomma.ui
 {
 	/// <summary>
 	/// UI canvas event delegate

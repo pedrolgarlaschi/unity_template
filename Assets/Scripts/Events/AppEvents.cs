@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
-using com.pedroleonardo.ui;
+using io.studiocomma.ui;
 
-namespace Coesia.events
+namespace io.studiocomma.events
 {
 	public abstract class AppEvent  {}
 
