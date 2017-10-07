@@ -26,7 +26,7 @@ public static class ExtensionMethods {
 	/// <param name="target">Target.</param>
 	/// <param name="name">Name.</param>
 	/// <typeparam name="T">The 1st type parameter.</typeparam>
-	public static T GetChieldFromName<T>(this Transform target, string name) where T : Component
+	public static T GetChildFromName<T>(this Transform target, string name) where T : Component
 	{
 		T[] transforms = target.gameObject.GetComponentsInChildren<T> ();
 
@@ -46,7 +46,7 @@ public static class ExtensionMethods {
 	/// <param name="target">Target.</param>
 	/// <param name="name">Name.</param>
 	/// <typeparam name="T">The 1st type parameter.</typeparam>
-	public static T[] GetChieldsFromName<T>(this Transform target, string name) where T : Component
+	public static T[] GetChildsFromName<T>(this Transform target, string name) where T : Component
 	{
 		T[] transforms = target.gameObject.GetComponentsInChildren<T> ();
 		List<T> arr = new List<T> ();
