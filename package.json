@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "displayName": "Pedro Garlaschi Unity Framework",
   "description": "Pedro Garlaschi Unity Framework \nCollection of helpers to speed up the daily workflow",
-  "unity": "2019.2",
-  "unityRelease": "0b5",
+  "unity": "2020.3",
+  "unityRelease": "20f1",
   "keywords": [
     "unity",
     "pedrogarlaschi",
