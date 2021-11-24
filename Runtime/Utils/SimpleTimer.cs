@@ -67,6 +67,13 @@ public class SimpleTimer : MonoBehaviour {
             StartTimer();
     }
 
+    public void DestroyTimer()
+    {
+        m_cTime = m_time;
+        IsRunning = false;
+        Destroy(gameObject);
+    }
+
     void Update()
     {
         if (!IsRunning) return;
@@ -75,16 +82,17 @@ public class SimpleTimer : MonoBehaviour {
 
         if (m_cTime <= 0)
         {
-            if(m_completeHandler != null)
+            if (m_onUpdate != null)
+                m_onUpdate(0);
+
+            if (m_completeHandler != null)
             {
-                if (m_onUpdate != null)
-                    m_onUpdate(m_cTime);
                 m_completeHandler();
                 StopTimer();
             }
 
-            if(DestroyOnComplete)
-                Destroy(gameObject);
+            if (DestroyOnComplete)
+                DestroyTimer();
 
             return;
         }
