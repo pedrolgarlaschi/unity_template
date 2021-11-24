@@ -186,7 +186,7 @@ namespace com.pedrogarlaschi.Audio
 
         private AudioContainer CreateAudioContainer(AudioClip clip, Transform t, AudioContainer.AudioType audioType , float volume)
         {
-            AudioContainer audio = TJUtils.Instantiate<AudioContainer>(clip.name);
+            AudioContainer audio = PSUtils.Instantiate<AudioContainer>(clip.name);
             audio.OnAudioComplete += Audio_OnAudioComplete;
             audio.Init(clip, audioType, t , volume);
             audio.StartAudio();
