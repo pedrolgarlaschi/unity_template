@@ -62,7 +62,7 @@ namespace com.pedrogarlaschi.Audio
 
             Mute(AudioManager.Mute);
 
-            if (t == null)
+            if (t != null)
             {
                 transform.SetParent(t);
                 transform.localPosition = Vector3.zero;
